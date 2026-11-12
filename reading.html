@@ -37,11 +37,18 @@ permalink: /reading/
           {% if item.authors %}<p class="reading-authors">{{ item.authors }}</p>{% endif %}
           {% if item.award %}<p class="reading-award">★ {{ item.award }}</p>{% endif %}
           {% if item.note %}<p class="reading-note">{{ item.note }}</p>{% endif %}
-          {% if item.review %}
-            <p class="reading-review-link">
-              <a href="{{ item.review | relative_url }}"><i class="fas fa-book-open"></i> Read My Full Note →</a>
-            </p>
-          {% endif %}
+          <div class="reading-links-row">
+            {% if item.github %}
+              <a class="reading-code-link" href="{{ item.github }}" target="_blank" rel="noopener">
+                <i class="fab fa-github"></i> Code
+              </a>
+            {% endif %}
+            {% if item.review %}
+              <a class="reading-review-link" href="{{ item.review | relative_url }}">
+                <i class="fas fa-book-open"></i> Read Full Note →
+              </a>
+            {% endif %}
+          </div>
         </li>
       {% endfor %}
     </ul>

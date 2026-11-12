@@ -10,6 +10,19 @@
 #   review:  string (optional link to local review in /posts/)
 
 groups:
+  - id: driving
+    label: "AD"
+    blurb: "e2e ad stuffs"
+    items:
+      - title: "SafeDrive: Fine-Grained Safety Reasoning for End-to-End Driving in a Sparse World"
+        authors: "Jungho Kim, Jiyong Oh, Seunghoon Yu, Hongjae Shin, Donghyuk Kwak, Jun Won Choi"
+        venue: "CVPR"
+        year: 2026
+        award: "Highlight"
+        url: "https://arxiv.org/abs/2602.18887"
+        github: "https://github.com/SPA-junghokim/SafeDrive"
+        note: "稀疏世界中的細粒度安全推理，將風險表徵與規劃約束結合"
+
   - id: foundation-models
     label: "Foundation Models & Architecture"
     blurb: "Core architectures, scaling laws, and attention mechanisms shaping modern AI."
