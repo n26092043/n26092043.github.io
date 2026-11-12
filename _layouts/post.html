@@ -1,0 +1,47 @@
+---
+layout: default
+---
+<div class="reading-progress"><div class="reading-progress-bar" id="reading-progress-bar"></div></div>
+
+<div class="shell post-shell">
+
+  <article class="post">
+    <header class="post-head">
+      <p class="post-meta">
+        <time datetime="{{ page.date | date_to_xmlschema }}">{{ page.date | date: '%Y · %m · %d' }}</time>
+        {% if page.categories.size > 0 %}
+          <span class="meta-sep">/</span>
+          <span class="meta-categories">{{ page.categories | join: ', ' }}</span>
+        {% endif %}
+      </p>
+      <h1 class="post-title">{{ page.title }}</h1>
+      {% if page.subtitle %}<p class="post-subtitle">{{ page.subtitle }}</p>{% endif %}
+      {% if page.tags.size > 0 %}
+        <div class="chip-row chip-row--compact">
+          {% for t in page.tags %}<span class="chip chip--mono">#{{ t }}</span>{% endfor %}
+        </div>
+      {% endif %}
+    </header>
+
+    <div class="post-grid">
+      <div class="post-content">
+        {{ content }}
+      </div>
+
+      {%- if page.toc != false -%}
+      <aside class="toc-aside" aria-label="Table of contents">
+        <div class="toc-sticky">
+          <p class="toc-label">on this page</p>
+          <nav class="toc" id="toc-target" aria-label="In-page navigation">
+            <!-- populated by post.js from the rendered headings -->
+          </nav>
+        </div>
+      </aside>
+      {%- endif -%}
+    </div>
+
+    <footer class="post-foot">
+      <a href="{{ '/posts/' | relative_url }}" class="back-link"><i class="fas fa-arrow-left"></i> all notes</a>
+    </footer>
+  </article>
+</div>

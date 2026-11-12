@@ -1,0 +1,74 @@
+# Grouped reading list, venue-verified.
+# Each item supports:
+#   title:   string (required)
+#   authors: string
+#   venue:   string (e.g. NeurIPS, ICLR, CVPR, ICML)
+#   year:    integer
+#   award:   string (optional, rendered with a star badge)
+#   url:     string (arXiv or conference link)
+#   note:    string (optional concise takeaway or summary)
+#   review:  string (optional link to local review in /posts/)
+
+groups:
+  - id: foundation-models
+    label: "Foundation Models & Architecture"
+    blurb: "Core architectures, scaling laws, and attention mechanisms shaping modern AI."
+    items:
+      - title: "Attention Is All You Need"
+        authors: "Vaswani, Shazeer, Parmar, Uszkoreit, Jones, Gomez, Kaiser, Polosukhin"
+        venue: "NeurIPS"
+        year: 2017
+        award: "Classic Oral"
+        url: "https://arxiv.org/abs/1706.03762"
+        note: "The seminal Transformer architecture replacing recurrence with self-attention."
+
+      - title: "BERT: Pre-training of Deep Bidirectional Transformers for Language Understanding"
+        authors: "Devlin, Chang, Lee, Toutanova"
+        venue: "NAACL"
+        year: 2019
+        award: "Best Long Paper"
+        url: "https://arxiv.org/abs/1810.04805"
+        note: "Bidirectional encoder representations via Masked Language Modeling."
+
+      - title: "Language Models are Few-Shot Learners (GPT-3)"
+        authors: "Brown, Mann, Ryder, Subbiah, Kaplan, et al."
+        venue: "NeurIPS"
+        year: 2020
+        url: "https://arxiv.org/abs/2005.14165"
+        note: "Empirical proof of in-context learning scaling properties."
+
+  - id: efficient-ml
+    label: "Parameter-Efficient Fine-Tuning (PEFT)"
+    blurb: "Methods to adapt massive models with minimal compute, memory, and storage footprints."
+    items:
+      - title: "LoRA: Low-Rank Adaptation of Large Language Models"
+        authors: "Hu, Shen, Wallis, Allen-Zhu, Li, Wang, Wang, Chen"
+        venue: "ICLR"
+        year: 2022
+        url: "https://arxiv.org/abs/2106.09685"
+        note: "Freezes weights and injects trainable rank decomposition matrices without inference latency."
+
+      - title: "QLoRA: Efficient Finetuning of Quantized LLMs"
+        authors: "Dettmers, Pagnoni, Holtzman, Zettlemoyer"
+        venue: "NeurIPS"
+        year: 2023
+        url: "https://arxiv.org/abs/2305.14314"
+        note: "4-bit NormalFloat quantization with double quantization and paged optimizers."
+
+  - id: multimodal
+    label: "Multimodal & Vision-Language"
+    blurb: "Bridging vision, language, and structured perception."
+    items:
+      - title: "Learning Transferable Visual Models From Natural Language Supervision (CLIP)"
+        authors: "Radford, Kim, Hallacy, Ramesh, Goh, Agarwal, et al."
+        venue: "ICML"
+        year: 2021
+        url: "https://arxiv.org/abs/2103.00020"
+        note: "Contrastive pre-training connecting text and image embeddings at scale."
+
+      - title: "An Image is Worth 16x16 Words: Transformers for Image Recognition at Scale (ViT)"
+        authors: "Dosovitskiy, Beyer, Kolesnikov, Weissenborn, et al."
+        venue: "ICLR"
+        year: 2021
+        url: "https://arxiv.org/abs/2010.11929"
+        note: "Applying standard Transformer directly to sequences of flattened image patches."

@@ -1,0 +1,54 @@
+# ─── Site Settings ────────────────────────────────────────────────────────
+title: "Paper Reading Notes"
+tagline: "Personal research notebook & paper reading list."
+description: >-
+  A curated collection of research papers, summaries, and reading notes on
+  machine learning, deep learning, and computing systems.
+url: "https://username.github.io"     # Replace with your GitHub Pages URL (e.g. https://yourname.github.io)
+baseurl: ""                           # If repo name is <username>.github.io leave empty; if sub-project e.g. /reading-list set "/reading-list"
+lang: zh-TW
+timezone: Asia/Taipei
+
+# ─── Author ──────────────────────────────────────────────────────────────
+author:
+  name: "Researcher"
+  github: "username"                  # Replace with your GitHub username
+  email: "researcher@example.com"
+  bio: "Exploring foundation models, algorithms, and computing."
+  cv: ""                              # Optional external link to your CV or portfolio
+
+# ─── Build & Markdown ────────────────────────────────────────────────────
+markdown: kramdown
+highlighter: rouge
+permalink: /posts/:slug/
+
+kramdown:
+  input: GFM
+  syntax_highlighter: rouge
+  toc_levels: 2..3
+  math_engine: false                  # Leave math untouched so MathJax renders LaTeX dynamically
+
+paginate: 10
+paginate_path: "/page:num/"
+
+sass:
+  sass_dir: _sass
+  style: compressed
+
+plugins:
+  - jekyll-feed
+  - jekyll-sitemap
+  - jekyll-seo-tag
+  - jekyll-paginate
+
+# ─── Defaults ────────────────────────────────────────────────────────────
+defaults:
+  - scope: { path: "", type: posts }
+    values:
+      layout: post
+      toc: true
+      math: true
+  - scope: { path: "_pages" }
+    values:
+      layout: page
+      permalink: /:basename/
