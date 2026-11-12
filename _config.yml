@@ -4,15 +4,15 @@ tagline: "Personal research notebook & paper reading list."
 description: >-
   A curated collection of research papers, summaries, and reading notes on
   machine learning, deep learning, and computing systems.
-url: "https://username.github.io"     # Replace with your GitHub Pages URL (e.g. https://yourname.github.io)
-baseurl: ""                           # If repo name is <username>.github.io leave empty; if sub-project e.g. /reading-list set "/reading-list"
+url: "https://n26092043.github.io"
+baseurl: ""
 lang: zh-TW
 timezone: Asia/Taipei
 
 # ─── Author ──────────────────────────────────────────────────────────────
 author:
-  name: "Researcher"
-  github: "username"                  # Replace with your GitHub username
+  name: "n26092043"
+  github: "n26092043"
   email: "researcher@example.com"
   bio: "Exploring foundation models, algorithms, and computing."
   cv: ""                              # Optional external link to your CV or portfolio
