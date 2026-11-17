@@ -1,7 +1,7 @@
 ---
-title: "Paper Review: LoRA — Low-Rank Adaptation of Large Language Models"
+title: "Paper Review: SafeDrive: Fine-Grained Safety Reasoning for End-to-End Driving in a Sparse World"
 subtitle: "Decomposing weight updates into low-rank matrices for efficient adaptation."
-date: 2024-03-15 14:00:00 +0800
+date: 2026-11-12 14:00:00 +0800
 categories: [Paper Review, Efficient ML]
 tags: [peft, lora, llm, fine-tuning]
 toc: true
@@ -76,20 +76,30 @@ SafeDrive 提出在**稀疏世界（Sparse World）**中引入「軌跡條件化
 
 ## 3. Methodology
 
-SafeDrive 的完整推論流程由四個子網絡構成：
 
-#### (1) 特徵提取與提案生成（ProposalNet）
 
-- **感測器輸入**：支援純視覺（Camera-only）或多模態融合（Camera + LiDAR，採用 BEVFormer-M 提取時空 BEV 特徵 FBEV*F*BEV）。
-- **實例檢測**：利用可學習物體查詢（Object Queries）解碼出周圍動態物件的 Instance Queries。
+![Main Result teaser image](https://spa-junghokim.github.io/SafeDrive-Page/static/figure/Method.png)
+
+完整推論流程由四個子網絡構成：
+
+#### (1) 特徵提取與粗篩候選軌跡生成 (ProposalNet)
+
+- **輸入**：支援純視覺 (Camera-only) 或多模態融合 (Camera + LiDAR)，經由 BEVFormer-M 提取時空 BEV 特徵圖 (*F*_BEV)
+- **實例檢測**：利用類似 DETR 的可學習 Object Queries 解碼出周圍動態物件的 Instance Queries
 - **提案生成**：ProposalNet 評估預設軌跡錨點（Trajectory Anchors），基於場景級特徵預先挑選出 K*K* 條粗篩的候選軌跡。
+- **粗篩**：ProposalNet 先做快速打分，挑出可能合理的一批**候選自車軌跡 (Safety-aware Candidates)**
 
-#### (2) 稀疏世界網絡（Sparse World Network, SWNet）
+#### (2) 假設性未來推演 —— 稀疏世界網絡 (Sparse World Network, SWNet)
 
 傳統世界模型試圖預測整個世界的未來變化，計算量極大且容易失焦。SWNet 採用**軌跡條件化（Trajectory-conditioned）**：
 
 - 針對每一條候選自車軌跡 TjT*j*，構建一個專屬的局部稀疏世界 WjW*j*。
 - 透過 **World-Self-Attention** 與 **Trajectory-guided Deformable Attention**，推演在「自車如果走這條軌跡」的假設下，周遭關鍵障礙物會如何運動，確保自車意圖與周圍實例的動態演變在特徵層面完成交互博弈。
+- **核心問題**：「如果我自車決定走候選軌跡 A，周圍的車會怎麼反應？」
+- **具體做法**：
+  - 針對每一條候選軌跡，SWNet 在內部建立一個獨立的「局部稀疏世界（Sparse World 
+  - 透過 **World-Self-Attention** 與 **Trajectory-guided Deformable Attention**，讓周圍的障礙物實例特徵，與自車這條特定的候選軌跡做交互
+- **目的**：推演在「自車走這條路」的前提下，周圍他車的動態反應，讓彼此的行為在特徵維度達成博弈對齊
 
 #### (3) 細粒度推理網絡（Fine-grained Reasoning Network, FRNet）
 
